@@ -1,8 +1,9 @@
-### Note: This project is built on top of Python 3.10.
+#### Pre-requisite:
+    Python 3.10 or higher.
 
-### Steps to run this application
-  #### Install the requirements
+#### Steps to build & run this application:
+  ##### Install the dependencies
     pip3 install -r requirements.txt
-  #### Run the application
+  ##### Run the application
     python3 interviewapp/manage.py runserver 0.0.0.0:8000
 
