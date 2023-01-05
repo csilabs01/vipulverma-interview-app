@@ -52,12 +52,7 @@ steps:
     script: |
       trivy image practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)
 
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      az acr login --name PracticalExam
-      docker push practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)
+
 - task: Docker@2
   inputs:
     containerRegistry: 'practicalexam'
