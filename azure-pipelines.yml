@@ -47,7 +47,7 @@ steps:
     repository: 'PracticalExam'
     command: 'build'
     Dockerfile: '**/Dockerfile'
-    tags: 'celestial-interview-app:$(Build.SourceBranchName)-$short_hash'
+    tags: 'celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)'
 
 - task: CmdLine@2
   displayName: "Run trivy scan"
