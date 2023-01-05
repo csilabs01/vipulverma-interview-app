@@ -53,13 +53,10 @@ steps:
       trivy image practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)
 
 
-- task: CmdLine@2
+- task: Docker@2
   inputs:
-    script: |
-      docker push practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)
-#- task: Docker@2
-#  inputs:
-#    containerRegistry: 'practicalexam'
-#    repository: 'PracticalExam'
-#    command: 'push'
-#    tags: 'celestial-interview-app:$(Build.SourceBranchName)-$short_hash'
+    containerRegistry: 'practicalexam'
+    repository: 'practicalexam.azurecr.io'
+    command: 'push'
+    tags: 'practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)'
+
