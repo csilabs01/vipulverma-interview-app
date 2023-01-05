@@ -45,24 +45,21 @@ steps:
   inputs:
     script: |
       docker build -f Dockerfile -t practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash) .
-#- task: Docker@2
-#  inputs:
-#    containerRegistry: 'practicalexam'
-#    repository: 'PracticalExam'
-#    command: 'build'
-#    Dockerfile: '**/Dockerfile'
-#    tags: 'celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)'
 
 - task: CmdLine@2
   displayName: "Run trivy scan"
   inputs:
     script: |
-      trivy image celestial-interview-app:$(Build.SourceBranchName)-$short_hash
+      trivy image practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)
 
 
-- task: Docker@2
+- task: CmdLine@2
   inputs:
-    containerRegistry: 'practicalexam'
-    repository: 'PracticalExam'
-    command: 'push'
-    tags: 'celestial-interview-app:$(Build.SourceBranchName)-$short_hash'
+    script: |
+      docker push practicalexam.azurecr.io/celestial-interview-app:$(Build.SourceBranchName)-$(short_hash)
+#- task: Docker@2
+#  inputs:
+#    containerRegistry: 'practicalexam'
+#    repository: 'PracticalExam'
+#    command: 'push'
+#    tags: 'celestial-interview-app:$(Build.SourceBranchName)-$short_hash'
